@@ -3,16 +3,19 @@ const service = (function() {
   // jsonObject = require('.jsonstore/dic.json')
   var dictionary =
   [
-    {"world":"valami"},
-    {"world":"something"},
-    {"world":"anything"},
+    {"word":"valami"},
+    {"word":"something"},
+    {"word":"anything"},
   ];
+
 
   var highScoreStore = [];
 
   function scoreSaver(input){
-    highScoreStore.push(input);
+    var newinput = JSON.stringify(input);
+    highScoreStore.push(newinput);
     console.log(highScoreStore);
+    localStorage.setItem('ize', input);
   };
 
 

@@ -3,24 +3,24 @@ var controll = (function(){
 
   var inputField = document.querySelector('.input');
 
-  function checkTheWord(){
-    return gameLogic.scoreFeedbacker(service.dictionary, inputField.value);
-  }
+  function checkTheWord() {
+    return gameLogic.scoreFeedbacker(service.dictionary, inputField.value, service.highScoreStore);
+  };
 
-  function listResultToDom(){
+  function listResultToDom() {
     domManager.fillContent(checkTheWord())
-  }
+  };
 
   function listHighScore() {
-    domManager.drawTable(service.highScoreStore)
-  }
+    console.log(Object.keys(localStorage.ize));
+    domManager.addHtml(gameLogic.validValue);
+  };
 
   function listDicToDom() {
-    // service.loadFile(domManager.showDictionary);
     domManager.showDictionary(JSON.stringify(service.dictionary));
-  }
+  };
 
-  return{
+  return {
     listDicToDom: listDicToDom,
     listResultToDom: listResultToDom,
     listHighScore: listHighScore,

@@ -6,7 +6,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #50e3c2;
-  text-align: center;
 }
 
 main {
@@ -97,4 +96,8 @@ p {
     margin: 5% auto;
     width: 90vw;
     height: 80vh;
+}
+
+table {
+  margin: auto;
 }

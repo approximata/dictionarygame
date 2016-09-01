@@ -5,11 +5,10 @@ var gameLogic = (function() {
   let validValue = {};
 
   function filterData(data, input){
-    console.log(data);
     return data.some(function(element){
-      return input === element.world;
+      return input === element.word;
     })
-  };
+  }
 
   function uniqueLetterCounter(input){
     var arr = input.split('').sort();
@@ -20,25 +19,29 @@ var gameLogic = (function() {
       }
     }
     return count;
-  };
+  }
 
-  function scoreFeedbacker(data, input) {
-    if (filterData(data, input)){
-      validValue.world = input;
+  function uniqueWordChecker(scoreList, input){
+    return scoreList.some(function(element){
+      var parseElement = JSON.parse(element);
+      return parseElement.word === input;
+    })
+  }
+
+  function scoreFeedbacker(data, input, scoreList) {
+
+
+    if (filterData(data, input) && !uniqueWordChecker(scoreList, input)){
+      validValue.word = input;
       validValue.score = uniqueLetterCounter(input);
-      console.log(validValue);
       service.scoreSaver(validValue);
-      return 'world: ' + validValue.world + ' score: ' + validValue.score;
+      return 'word: ' + validValue.word + ' score: ' + validValue.score;
     }
-    return 'Not in the dictionary';
-  };
-
+    return 'Bad word! Please give me an other one!';
+  }
 
   return {
     scoreFeedbacker: scoreFeedbacker,
     validValue: validValue,
   }
-
-
-
 })();
